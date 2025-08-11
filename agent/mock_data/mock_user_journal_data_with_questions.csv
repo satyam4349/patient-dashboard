@@ -1,0 +1,105 @@
+user_id,disorder_prediction,journal_entry,detected_markers,check_in_question
+1.0,Depression,I barely slept last night. I feel worthless and nothing will change. I haven't painted in weeks.,"['Poor sleep', 'Hopelessness language', 'Loss of interest (anhedonia)', 'Negative self-references']",
+2.0,Anxiety,I can’t stop pacing. Something bad will happen tomorrow. I skipped the party because I was too nervous.,"['Restlessness', 'Future-oriented negative statements', 'Avoidance behavior']",
+3.0,Suicidal Ideation,They’d be better off without me. I left letters for my friends. I sleep all day now.,"['Perceived burdensomeness', 'Preparatory actions', 'Drastic routine change']",
+4.0,Schizophrenia,The car runs because I think about jellyfish. I wore a coat in summer and forgot to eat.,"['Bizarre associations', 'Disorganized behavior', 'Poor self-care']",
+,,,,Are you feeling okay today? 🍽️ / 😴
+,,,,Do you feel tired? 🗣️ / 📞
+,,,,Want to talk to a friend or family member? 😴 / 🛏️
+,,,,Are you feeling okay today? 😴 / ⚠️
+,,,,Do you have thoughts about hurting yourself? 💪 Yes / 🙂 No
+,,,,Did you eat a meal today? 😔 Yes / 📞 No
+,,,,Are you feeling safe right now? 🛏️ / 😴
+,,,,Do you want to share how you're feeling? 🍽️ Yes / 🗣️ No
+,,,,Are you feeling okay today? 😴 / 🗣️
+,,,,Do you have thoughts about hurting yourself? 🗣️ Yes / 🙂 No
+,,,,Want to talk to a friend or family member? 🙂 / 💪
+,,,,Have you spoken to anyone today? 😴 Yes / 😔 No
+,,,,Are you feeling okay today? ⚠️ / 💪
+,,,,Did you eat a meal today? 💪 Yes / 📞 No
+,,,,Did you eat a meal today? 🛏️ Yes / 🍽️ No
+,,,,Do you feel tired? 😔 / ⚠️
+,,,,Do you feel tired? 📞 / 🙂
+,,,,Are you feeling okay today? ⚠️ / ❌
+,,,,Do you want to share how you're feeling? 📞 Yes / 🗣️ No
+,,,,Did you eat a meal today? ❌ Yes / 💪 No
+,,,,Have you spoken to anyone today? 🤐 Yes / 📞 No
+,,,,Did you go outside today? 🙂 Yes / 📞 No
+,,,,Did you eat a meal today? 🤐 Yes / 🍽️ No
+,,,,Do you want to share how you're feeling? 😔 Yes / 📞 No
+,,,,Are you feeling safe right now? 😴 / 🗣️
+,,,,Are you feeling safe right now? 😴 / 😔
+,,,,Do you have thoughts about hurting yourself? 🗣️ Yes / 📞 No
+,,,,Do you have thoughts about hurting yourself? 🤐 Yes / 🗣️ No
+,,,,Did you eat a meal today? 😴 Yes / ❌ No
+,,,,Did you get out of bed today? 🗣️ Yes / 🙂 No
+,,,,Did you go outside today? 💪 Yes / ⚠️ No
+,,,,Did you go outside today? 🗣️ Yes / 🙂 No
+,,,,Are you feeling safe right now? 😴 / 🗣️
+,,,,Are you feeling okay today? 🗣️ / 🙂
+,,,,Are you feeling safe right now? 💪 / 📞
+,,,,Did you go outside today? 🙂 Yes / 🗣️ No
+,,,,Are you feeling safe right now? 📞 / ❌
+,,,,Do you want to share how you're feeling? 🗣️ Yes / ⚠️ No
+,,,,Did you get out of bed today? 😴 Yes / 💪 No
+,,,,Are you feeling okay today? ❌ / 🙂
+,,,,Did you get out of bed today? 🛏️ Yes / 🤐 No
+,,,,Did you eat a meal today? 🍽️ Yes / 😴 No
+,,,,Did you eat a meal today? ❌ Yes / ⚠️ No
+,,,,Did you eat a meal today? 🙂 Yes / 🛏️ No
+,,,,Do you feel tired? 💪 / 🛏️
+,,,,Do you have thoughts about hurting yourself? 🗣️ Yes / 🙂 No
+,,,,Are you feeling okay today? 🤐 / 🗣️
+,,,,Are you feeling okay today? 🛏️ / 🤐
+,,,,Did you get out of bed today? ⚠️ Yes / 😔 No
+,,,,Want to talk to a friend or family member? 😔 / 🛏️
+,,,,Did you get out of bed today? ⚠️ Yes / 🗣️ No
+,,,,Have you spoken to anyone today? 🙂 Yes / 🗣️ No
+,,,,Are you feeling safe right now? 😴 / 🍽️
+,,,,Are you feeling safe right now? 💪 / 🙂
+,,,,Are you feeling okay today? 🙂 / 📞
+,,,,Are you feeling safe right now? 😴 / 🤐
+,,,,Did you get out of bed today? 📞 Yes / 🛏️ No
+,,,,Do you want to share how you're feeling? ❌ Yes / 🍽️ No
+,,,,Do you have thoughts about hurting yourself? 😴 Yes / 🙂 No
+,,,,Are you feeling okay today? 🛏️ / ⚠️
+,,,,Have you spoken to anyone today? 🙂 Yes / 😴 No
+,,,,Do you want to share how you're feeling? 🛏️ Yes / ⚠️ No
+,,,,Do you have thoughts about hurting yourself? 🤐 Yes / 🙂 No
+,,,,Have you spoken to anyone today? ❌ Yes / ⚠️ No
+,,,,Did you get out of bed today? ⚠️ Yes / 🙂 No
+,,,,Want to talk to a friend or family member? 🤐 / 🍽️
+,,,,Did you eat a meal today? 😔 Yes / 📞 No
+,,,,Did you get out of bed today? 🛏️ Yes / ❌ No
+,,,,Did you go outside today? 🤐 Yes / 📞 No
+,,,,Did you get out of bed today? 😴 Yes / 🗣️ No
+,,,,Are you feeling okay today? 🛏️ / 📞
+,,,,Did you eat a meal today? 🤐 Yes / ⚠️ No
+,,,,Do you want to share how you're feeling? ❌ Yes / 🤐 No
+,,,,Have you spoken to anyone today? 🍽️ Yes / 😴 No
+,,,,Did you go outside today? 🙂 Yes / 🗣️ No
+,,,,Did you get out of bed today? 😔 Yes / 💪 No
+,,,,Have you spoken to anyone today? ❌ Yes / 🛏️ No
+,,,,Did you go outside today? 😴 Yes / 🗣️ No
+,,,,Are you feeling okay today? ⚠️ / 🙂
+,,,,Do you have thoughts about hurting yourself? 🍽️ Yes / 😔 No
+,,,,Are you feeling okay today? 📞 / 🤐
+,,,,Do you have thoughts about hurting yourself? 💪 Yes / 📞 No
+,,,,Do you feel tired? 🛏️ / 📞
+,,,,Did you get out of bed today? ⚠️ Yes / 📞 No
+,,,,Have you spoken to anyone today? ❌ Yes / 😴 No
+,,,,Are you feeling okay today? 🙂 / 🍽️
+,,,,Do you feel tired? 😔 / 🤐
+,,,,Are you feeling safe right now? 🍽️ / 🛏️
+,,,,Are you feeling okay today? 🙂 / 🗣️
+,,,,Have you spoken to anyone today? 🛏️ Yes / 🍽️ No
+,,,,Do you have thoughts about hurting yourself? 🙂 Yes / 🍽️ No
+,,,,Did you get out of bed today? ❌ Yes / 🍽️ No
+,,,,Do you feel tired? 🍽️ / 🙂
+,,,,Are you feeling okay today? 🤐 / 😔
+,,,,Are you feeling okay today? 🙂 / 🤐
+,,,,Are you feeling okay today? 📞 / ⚠️
+,,,,Have you spoken to anyone today? 🤐 Yes / 😴 No
+,,,,Did you eat a meal today? ⚠️ Yes / 🍽️ No
+,,,,Do you want to share how you're feeling? 📞 Yes / 🍽️ No
+,,,,Have you spoken to anyone today? 🙂 Yes / 😴 No

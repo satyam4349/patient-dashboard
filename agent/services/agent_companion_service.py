@@ -12,7 +12,7 @@ class AgentCompanionService:
         self.llm_service = LLMService()
         self.conversations = {}  # conversation_id -> AgentConversation
 
-    def start_conversation(self, user_id: str, initial_message: str, llm_backend: str = "grok") -> AgentConversation:
+    def start_conversation(self, user_id: str, initial_message: str, llm_backend: str = "groq") -> AgentConversation:
         conversation_id = str(uuid.uuid4())
         now = datetime.utcnow()
         messages = [
@@ -48,19 +48,39 @@ class AgentCompanionService:
     def _build_context(self, journal_entries: List) -> str:
         if not journal_entries:
             return ""
-        recent = journal_entries[-3:]
+        recent = journal_entries[-3:]  # Get last 3 entries
         context_lines = []
         for entry in recent:
+            markers_str = ", ".join(entry.detected_markers) if entry.detected_markers else "None"
             context_lines.append(
-                f"[{entry.entry_date.date()}] Mood: {entry.mood_score}, Stress: {entry.stress_level}, Note: {entry.content[:50]}"
+                f"Disorder: {entry.disorder_prediction}, Entry: {entry.journal_entry[:100]}..., Markers: {markers_str}"
             )
         return " | ".join(context_lines)
 
     def _build_prompt(self, user_message: str, context: str) -> str:
+        system_prompt = """You are a compassionate AI mental health companion. Your role is to:
+1. Provide empathetic, supportive responses
+2. Use the user's journal context to personalize your responses
+3. Offer practical coping strategies when appropriate
+4. Encourage professional help when needed
+5. Never provide medical diagnoses or replace professional therapy
+
+Be warm, understanding, and helpful while maintaining appropriate boundaries."""
+        
         if context:
-            return f"User's recent journal: {context}\nUser: {user_message}\nAgent:"
+            return f"""{system_prompt}
+
+User's recent journal context: {context}
+
+User: {user_message}
+
+Respond as a caring mental health companion:"""
         else:
-            return f"User: {user_message}\nAgent:"
+            return f"""{system_prompt}
+
+User: {user_message}
+
+Respond as a caring mental health companion:"""
 
     def get_conversation(self, conversation_id: str) -> Optional[AgentConversation]:
         return self.conversations.get(conversation_id)

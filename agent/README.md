@@ -109,8 +109,8 @@ Create a `.env` file with the following variables:
 
 ```env
 # Required: API Keys
-GROK_API_KEY=your_grok_api_key_here
-GEMINI_API_KEY=your_gemini_api_key_here
+GROQ_API_KEY=your_groq_api_key_here
+GOOGLE_API_KEY=your_google_api_key_here
 
 # Optional: Configuration
 DEBUG=True
@@ -118,12 +118,12 @@ DEBUG=True
 
 ### API Key Setup
 
-1. **Grok API Key:**
-   - Visit [Grok API Console](https://console.grok.com)
+1. **Groq API Key:**
+   - Visit [Groq Console](https://console.groq.com)
    - Create an account and generate an API key
    - Add to your `.env` file
 
-2. **Gemini API Key:**
+2. **Google API Key:**
    - Visit [Google AI Studio](https://makersuite.google.com/app/apikey)
    - Create an API key
    - Add to your `.env` file

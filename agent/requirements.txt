@@ -1,7 +1,14 @@
-# Core web framework dependencies - pinned for stability
-fastapi>=0.115.0,<0.116.0
-uvicorn[standard]>=0.35.0,<0.36.0
-pydantic>=2.11.0,<2.12.0
+# Core dependencies for the agent
+fastapi>=0.115.0,<0.116.0   # API framework
+uvicorn[standard]>=0.35.0,<0.36.0  # ASGI server
+pydantic>=2.11.0,<2.12.0    # Data validation
+gradio>=5.42.0,<5.43.0      # Web interface
+python-dotenv>=1.1.0,<1.2.0 # Environment variables
+
+# LLM API clients
+google-generativeai>=0.3.0   # For Gemini
+groq>=0.4.0                  # For GROQ
+requests>=2.32.0,<2.33.0     # For HTTP requests
 
 # Data processing - compatible versions for Python 3.13
 pandas>=2.3.0,<2.4.0

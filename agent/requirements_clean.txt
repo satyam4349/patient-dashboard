@@ -1,0 +1,17 @@
+# Core dependencies for Agent Companion
+fastapi>=0.115.0,<0.116.0
+uvicorn[standard]>=0.35.0,<0.36.0
+pydantic>=2.11.0,<2.12.0
+gradio>=5.42.0,<5.43.0
+python-dotenv>=1.1.0,<1.2.0
+
+# LLM API clients
+google-generativeai>=0.3.0
+groq>=0.4.0
+requests>=2.32.0,<2.33.0
+
+# Data processing
+pandas>=2.3.0,<2.4.0
+
+# Additional FastAPI dependencies
+python-multipart>=0.0.20,<0.1.0

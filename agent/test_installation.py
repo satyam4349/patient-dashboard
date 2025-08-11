@@ -69,20 +69,10 @@ def test_basic_functionality():
         # Create test journal entry
         test_entry = JournalEntry(
             user_id="test_user",
-            entry_id="test_001",
-            entry_date=datetime.now(),
-            mood_score=7,
-            energy_level=6,
-            sleep_hours=8.0,
-            stress_level=3,
-            anxiety_level=2,
-            depression_level=1,
-            content="Test journal entry",
-            triggers="None",
-            coping_strategies="Deep breathing",
-            medication_taken="None",
-            therapy_session="No",
-            risk_flags="None"
+            disorder_prediction="None",
+            journal_entry="Test journal entry for validation",
+            detected_markers=["test_marker_1", "test_marker_2"],
+            check_in_question="How are you feeling today?"
         )
         print("  ✅ Pydantic models working correctly")
         

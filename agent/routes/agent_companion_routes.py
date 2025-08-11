@@ -10,7 +10,7 @@ agent_service = AgentCompanionService()
 class StartConversationRequest(BaseModel):
     user_id: str
     initial_message: str
-    llm_backend: Optional[str] = "grok"  # or "gemini"
+    llm_backend: Optional[str] = "groq"  # or "gemini"
 
 class ContinueConversationRequest(BaseModel):
     conversation_id: str

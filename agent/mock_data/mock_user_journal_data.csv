@@ -1,0 +1,9 @@
+user_id,disorder_prediction,journal_entry,detected_markers
+1,Depression,I barely slept last night. I feel worthless and nothing will change. I haven't painted in weeks.,"['Poor sleep', 'Hopelessness language', 'Loss of interest (anhedonia)', 'Negative self-references']"
+2,Anxiety,I can’t stop pacing. Something bad will happen tomorrow. I skipped the party because I was too nervous.,"['Restlessness', 'Future-oriented negative statements', 'Avoidance behavior']"
+3,Suicidal Ideation,They’d be better off without me. I left letters for my friends. I sleep all day now.,"['Perceived burdensomeness', 'Preparatory actions', 'Drastic routine change']"
+4,Schizophrenia,The car runs because I think about jellyfish. I wore a coat in summer and forgot to eat.,"['Bizarre associations', 'Disorganized behavior', 'Poor self-care']"
+user_001,None,Had a good day today. Went for a walk and felt peaceful. Looking forward to tomorrow.,"['Positive mood', 'Physical activity', 'Optimism']"
+user_001,Mild Anxiety,Feeling a bit worried about the presentation tomorrow but I've prepared well.,"['Future worry', 'Preparation behavior']"
+user_002,Depression,Everything feels heavy today. Can't seem to get motivated to do anything.,"['Low energy', 'Lack of motivation', 'Emotional heaviness']"
+user_002,None,Talked to a friend today and felt much better. Sometimes connection is all we need.,"['Social support', 'Improved mood', 'Connection']"
