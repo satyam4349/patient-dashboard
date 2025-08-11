@@ -25,6 +25,8 @@ class CompanionConfig:
         self.memory_k = 5  # Number of conversations to remember
         self.summary_trigger_turns = 10  # Number of turns before triggering summary
         self.window_turns = 5  # Number of conversation turns to maintain in context window
+        # Idle time before sending a yes/no nudge (in seconds)
+        self.yes_no_idle_seconds = 120
         
         # Service settings
         self.default_backend = "groq"

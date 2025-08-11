@@ -17,6 +17,7 @@ from routes.auth_routes import router as auth_router
 from routes.patient_routes import router as patient_router
 from routes.agent_routes import router as agent_router
 from routes.ai_companion_routes import router as ai_companion_router
+from routes.diagnostics_routes import router as diagnostics_router
 from config import settings
 
 # Configure logging
@@ -148,6 +149,7 @@ app.include_router(auth_router)
 app.include_router(patient_router)
 app.include_router(agent_router)
 app.include_router(ai_companion_router)
+app.include_router(diagnostics_router)
 
 # Root endpoint
 @app.get("/")

@@ -27,6 +27,13 @@ class ConversationState:
     last_user_ts: Optional[datetime] = None
     last_assistant_ts: Optional[datetime] = None
     last_nudge_ts: Optional[datetime] = None
+    # UI hints for yes/no modal
+    pending_yes_no: bool = False
+    pending_yes_no_question: Optional[str] = None
+    # UI hints for mood emoji modal
+    pending_mood: bool = False
+    pending_mood_prompt: Optional[str] = None
+    current_mood: Optional[str] = None  # e.g., very_good, good, neutral, down, sad, angry, anxious
 
     def append_user(self, content: str) -> None:
         now = utc_now()

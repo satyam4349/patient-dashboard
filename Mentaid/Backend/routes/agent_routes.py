@@ -36,6 +36,16 @@ class ReportGenerationRequest(BaseModel):
     report_type: str = "soap"  # soap, progress
 
 
+class InteractiveStartRequest(BaseModel):
+    user_id: str
+    context_text: Optional[str] = None
+
+
+class InteractiveAnswerRequest(BaseModel):
+    session_id: str
+    answer: str
+
+
 @router.post("/patient/chat")
 async def patient_chat(
     request: Request,
@@ -73,6 +83,47 @@ async def patient_chat(
         raise
     except Exception as e:
         logger.error(f"/patient/chat error: {e}")
+        raise HTTPException(status_code=500, detail="Internal server error")
+
+
+@router.post("/patient/interactive/start")
+async def patient_interactive_start(
+    request: Request,
+    data: InteractiveStartRequest,
+    current_user=get_current_user_required()
+):
+    """
+    Start yes/no interactive screening when user input is short.
+    """
+    try:
+        await rate_limiter.check_rate_limit(request, max_requests=100, window_seconds=3600)
+        user_id = current_user["sub"] if "sub" in current_user else data.user_id
+        start = await agent_service.start_interactive(user_id, data.context_text)
+        return {"status": "in_progress", **start}
+    except HTTPException:
+        raise
+    except Exception as e:
+        logger.error(f"/patient/interactive/start error: {e}")
+        raise HTTPException(status_code=500, detail="Internal server error")
+
+
+@router.post("/patient/interactive/answer")
+async def patient_interactive_answer(
+    request: Request,
+    data: InteractiveAnswerRequest,
+    current_user=get_current_user_required()
+):
+    """
+    Answer yes/no interactive screening question.
+    """
+    try:
+        await rate_limiter.check_rate_limit(request, max_requests=100, window_seconds=3600)
+        nxt = await agent_service.answer_interactive(data.session_id, data.answer)
+        return {"status": "in_progress" if "final" not in nxt else "complete", **nxt}
+    except HTTPException:
+        raise
+    except Exception as e:
+        logger.error(f"/patient/interactive/answer error: {e}")
         raise HTTPException(status_code=500, detail="Internal server error")
 
 

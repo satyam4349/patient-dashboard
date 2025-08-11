@@ -85,4 +85,8 @@ class LLMClient:
         messages = prompts.build_yes_no_nudge_messages(context_snippet)
         return self._chat_completion(messages, self.config.groq_model)
 
+    def mood_yes_no(self, mood: str, context_snippet: str) -> str:
+        messages = prompts.build_mood_yes_no_messages(mood, context_snippet)
+        return self._chat_completion(messages, self.config.groq_model)
+
 

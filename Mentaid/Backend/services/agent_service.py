@@ -17,6 +17,7 @@ logger = logging.getLogger(__name__)
 # Load env
 load_dotenv()
 
+from services.diagnostics_service import DiagnosticsService
 
 class PatientCompanionAgent:
     """
@@ -24,9 +25,10 @@ class PatientCompanionAgent:
     and emotional support.
     """
     
-    def __init__(self):
+    def __init__(self, diagnostics: DiagnosticsService):
         self.conversation_history = []
         self.user_context = {}
+        self.diagnostics = diagnostics
         
     async def process_message(self, user_id: str, message: str, context: Dict = None) -> Dict:
         """
@@ -60,6 +62,14 @@ class PatientCompanionAgent:
                     }
                 }
             
+            # If input is too short, start yes/no interactive triage
+            if len(message.split()) < 5:
+                start = self.diagnostics.start_interactive(user_id, message)
+                return {
+                    "status": "interactive",
+                    **start
+                }
+
             # Mood-related responses
             if any(word in message_lower for word in ['sad', 'depressed', 'down', 'low']):
                 response = "I hear that you're feeling really down right now. That sounds really difficult. Can you tell me more about what's been contributing to these feelings? Sometimes talking through what's happening can help us understand it better."
@@ -78,10 +88,14 @@ class PatientCompanionAgent:
             extracted_data = self._extract_insights(message, context or {})
             extracted_data["mood_indicator"] = mood_indicator
             
+            # Run lightweight screening using diagnostics service and persist to CSV
+            screening = self.diagnostics.predict_from_text(user_id, message)
+            
             return {
                 "status": "success",
                 "response": response,
                 "extracted_data": extracted_data,
+                "screening": screening,
                 "conversation_id": f"{user_id}_{datetime.now().timestamp()}"
             }
             
@@ -393,12 +407,21 @@ class AgentService:
     """Main service class for managing both AI agents."""
     
     def __init__(self):
-        self.pca = PatientCompanionAgent()
+        self.diagnostics = DiagnosticsService()
+        self.pca = PatientCompanionAgent(self.diagnostics)
         self.caa = ClinicalAssistantAgent()
     
     async def patient_chat(self, user_id: str, message: str, context: Dict = None) -> Dict:
         """Handle patient chat through PCA."""
         return await self.pca.process_message(user_id, message, context)
+
+    async def start_interactive(self, user_id: str, context_text: Optional[str] = None) -> Dict:
+        """Start yes/no interactive triage through DiagnosticsService."""
+        return self.diagnostics.start_interactive(user_id, context_text)
+
+    async def answer_interactive(self, session_id: str, answer: str) -> Dict:
+        """Answer yes/no interactive triage question."""
+        return self.diagnostics.answer_interactive(session_id, answer)
     
     async def clinical_analysis(self, user_id: str, analysis_type: str = "comprehensive") -> Dict:
         """Handle clinical analysis through CAA."""

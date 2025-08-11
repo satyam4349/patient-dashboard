@@ -49,3 +49,14 @@ def build_yes_no_nudge_messages(context_snippet: str) -> List[Dict]:
     ]
 
 
+def build_mood_yes_no_messages(mood: str, context_snippet: str) -> List[Dict]:
+    instruction = (
+        "Craft a single yes/no question tailored to the user's current mood. "
+        "Mood will be one of: very_good, good, neutral, down, sad, angry, anxious. "
+        "Be empathetic and concise (<= 18 words). Return ONLY the question text."
+    )
+    return [
+        {"role": "system", "content": instruction},
+        {"role": "user", "content": f"Mood: {mood}\nContext: {context_snippet}"},
+    ]
+
