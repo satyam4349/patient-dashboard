@@ -1,0 +1,20 @@
+# Minimal requirements for agent companion to work - Python 3.13 compatible
+# Core web framework
+fastapi==0.115.6
+uvicorn[standard]==0.35.0
+pydantic==2.11.7
+
+# Data processing
+pandas==2.3.1
+numpy==1.26.4
+
+# Environment and HTTP
+python-dotenv==1.1.1
+requests==2.32.4
+
+# Web interface
+gradio==5.42.0
+
+# Essential utilities
+typing-extensions==4.14.1
+python-multipart==0.0.20

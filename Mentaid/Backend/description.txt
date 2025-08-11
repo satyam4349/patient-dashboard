@@ -1,0 +1,66 @@
+Overview
+- Purpose: Production-oriented FastAPI backend for MirrorMind with authentication, patient journaling endpoints, and Supabase integration.
+- Scope: Only for the contents of this folder `Backend/` (excludes `Prototype/`).
+
+Structure
+- main.py: FastAPI app with CORS, trusted hosts, request logging, health/status/config endpoints, and router wiring.
+- config.py: Application settings using pydantic-settings (v2). Reads from `.env`.
+- routes/
+  - auth_routes.py: Auth endpoints (login, register, password ops), depends on AuthService.
+  - patient_routes.py: Patient journaling endpoints (mood, journal, history), depends on PatientService.
+- services/
+  - auth_service.py: Supabase-backed user auth, JWT handling, password hashing.
+  - patient_service.py: Supabase-backed mood/journal operations and encryption helper.
+- middleware/
+  - auth_middleware.py: JWT extraction/validation helpers for protected routes.
+- models/
+  - user_models.py, patient_models.py: Pydantic v2 models for request/response payloads.
+- database/
+  - migrations/: placeholder for future DB migrations (currently using Supabase).
+- utils/
+  - security.py: JWT helpers using python-jose and password hashing with bcrypt.
+- Dockerfile, docker-compose.yml: Containerization setup.
+- .env, .env.example: Environment configuration.
+
+Python version
+- Recommended: Python 3.10 or 3.11
+
+Installation
+- Use the consolidated requirements file here: optimized_requie.txt
+  Example:
+  pip install -r optimized_requie.txt
+
+Environment variables (.env)
+- JWT_SECRET_KEY: Long random string (>=32 chars).
+- SUPABASE_URL: Your Supabase project URL (https://...).
+- SUPABASE_ANON_KEY: Supabase anon key.
+- SUPABASE_SERVICE_ROLE_KEY: Supabase service role key (keep secret, backend use only).
+- HOST: Default 0.0.0.0
+- PORT: Default 8000
+- DEBUG: true/false
+- Optional:
+  - OPENROUTER_API_KEY, GROQ_API_KEY, CLOUDINARY_URL (if later integrated by services)
+
+How to run (development)
+- From this folder:
+  uvicorn main:app --reload
+- Docs: http://127.0.0.1:8000/docs
+- Health: http://127.0.0.1:8000/health
+
+Dependencies (installed by optimized_requie.txt)
+- API core: fastapi, uvicorn[standard]
+- Validation/settings: pydantic[email] v2, pydantic-settings v2, python-dotenv
+- Auth/security: python-jose, bcrypt, cryptography
+- Supabase client: supabase
+- HTTP client and system info: httpx, psutil
+
+Notes
+- CORS and trusted hosts are configured in `main.py` and `config.py`.
+- All sensitive configuration comes from `.env` and `config.Settings`.
+- Supabase is used for persistence; ensure the three Supabase env vars are correct.
+- JWT tokens are signed with `JWT_SECRET_KEY` using HS256; keep it secret and strong.
+
+Troubleshooting
+- 401/403 errors: Verify Authorization header and token validity; check JWT secret and expiry config.
+- Supabase errors: Validate URL/keys and table setup; see logs from `AuthService.create_user_table()` on startup.
+- Pydantic v2 validation errors: Ensure request bodies match models in `models/`.
