@@ -1,0 +1,11 @@
+# Core embedding dependencies with strict version pinning
+sentence-transformers==2.5.1
+torch==2.2.1  # LTS version
+transformers==4.37.2
+numpy==1.26.4  # Compatible with Python 3.13
+scikit-learn==1.4.1.post1  # For similarity calculations
+pandas==2.3.0  # Already in your requirements
+
+# Additional dependencies that sentence-transformers needs
+nltk==3.8.1
+tqdm==4.66.2
